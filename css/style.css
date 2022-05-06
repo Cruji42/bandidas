@@ -6274,4 +6274,47 @@ h6 {
   font-size: 12px;
 }
 
+/* login css */
+
+.login_content{
+  background: linear-gradient(
+    rgba(255, 255, 255, 0.25), 
+    rgba(255, 255, 255, 0.25)
+  ), url('../img/banner/banner.png') ;
+  height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.bg-opacity-75{
+  background: linear-gradient(
+    rgba(255, 255, 255, 0.25), 
+    rgba(255, 255, 255, 0.25)
+  )
+}
+
+
+
+.bg-opacity-50{
+  background: linear-gradient(
+    rgba(255, 255, 255, 0.5), 
+    rgba(255, 255, 255, 0.5)
+  )
+}
+
+.bg-opacity-25{
+  background: linear-gradient(
+    rgba(255, 255, 255, 0.75), 
+    rgba(255, 255, 255, 0.75)
+  )
+}
+
+.bg-opacity-10{
+  background: linear-gradient(
+    rgba(255, 255, 255, 0.9), 
+    rgba(255, 255, 255, 0.9)
+  )
+}
+
 /*# sourceMappingURL=style.css.map */

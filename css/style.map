@@ -3,6 +3,7 @@
 	"file": "style.css",
 	"sources": [
 		"../scss/style.scss",
+		"../scss/_login.scss",
 		"../scss/_varriable.scss",
 		"../scss/_mixins.scss",
 		"../scss/_extend.scss",
