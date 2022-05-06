@@ -1,16 +1,12 @@
-@app.route('/my-first-api', methods = ['GET'])
+from flask import Flask, jsonify, request, send_file
+
+app = Flask("demo")
+
+@app.route('/my-first-api', method = ['GET'])
+
 def hello():
-    name = request.args.get('name')
 
-    if name is None:
-        text = 'Hello!'
-
-    else:
-        text = 'Hello ' + name + '!'
-
-    return jsonify({"message": text})
-
-
+    return "Hello world!"
 
 if __name__ == '__main__':
     app.run(debug=True, port=8000)
