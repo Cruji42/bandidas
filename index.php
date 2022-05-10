@@ -25,7 +25,8 @@ if (implode($uri) != "index.php"){
 
 switch ($URL){
     case 'HOME':
-        include("index.html");
+        header('Location: index.html');
+        exit;
         break;
     case 'USER':
         $postdata = file_get_contents("php://input");
