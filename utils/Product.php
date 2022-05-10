@@ -30,7 +30,7 @@ class Product {
         $response = dbc::Query($query);
         return $response;
     }
-    public static function deleteUser($param){
+    public static function deleteProduct($param){
         $id = $param;
         $query = "Delete from public.tbl_product where id = $id";
         $response = dbc::Query($query);

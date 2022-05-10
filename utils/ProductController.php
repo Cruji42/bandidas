@@ -53,7 +53,7 @@ class ProductController {
     }
     public function deleteProduct($id)
     {
-        $result = Product::deleteUser($id);
+        $result = Product::deleteProduct($id);
         if (! $result) {
             return $this->notFoundResponse();
         }
@@ -69,7 +69,7 @@ class ProductController {
             return $this->unprocessableEntityResponse();
         }
         Product::addProduct($input);
-        $response['status_code_header'] = 'HTTP/1.1 201 Deleted';
+        $response['status_code_header'] = 'HTTP/1.1 201 Product Created';
         $response['body'] = null;
         return $response;
     }
