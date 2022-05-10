@@ -15,9 +15,8 @@ include_once 'utils/headers.php';
 //we init the string without the ip
 $uri = explode("/", substr(@$_SERVER['PHP_SELF'],1));
 
-if (implode($uri) != "bandidasindex.php"){
-    echo(implode($uri));
-    $URL = rtrim($uri[2],'.php');
+if (implode($uri) != "index.php"){
+    $URL = rtrim($uri[1],'.php');
 }else{
     $URL = "HOME";
 }
