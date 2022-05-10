@@ -14,10 +14,19 @@ include_once 'utils/headers.php';
 //get the name of the archive clean
 //we init the string without the ip
 $uri = explode("/", substr(@$_SERVER['PHP_SELF'],1));
-$URL = rtrim($uri[2],'.php');
+
+if (implode($uri) != "bandidasindex.php"){
+    $URL = rtrim($uri[2],'.php');
+}else{
+    $URL = "HOME";
+}
+
 
 
 switch ($URL){
+    case 'HOME':
+        include("index.html");
+        break;
     case 'USER':
         $postdata = file_get_contents("php://input");
         $request = json_decode($postdata);
@@ -45,5 +54,4 @@ switch ($URL){
         $controller = new OrderController();
         $controller->processRequest($requestMethod, $Id, $id_order);
         break;
-
 };

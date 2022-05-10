@@ -15,27 +15,29 @@ include_once ('../vendor/autoload.php');*/
 class User {
 
     public static function addUser($User){
-        $Nombre = $User['Name'];
-        $Apellido = $User['LastName'];
-        $Telefono = $User['Telephone'];
-        $Direccion = $User['Address'];
-        $Ciudad = $User['City'];
-        $Correo = $User['Mail'];
-        $ContrasenaEn = password_hash($User['Password'], PASSWORD_DEFAULT, ['cost' => 5]);
-        $query = "CALL Agregar_Usuario('$Nombre', '$Apellido', '$Telefono', '$Direccion', '$Ciudad', '$Correo', '$ContrasenaEn')";
+        $Name = $User['Name'];
+        $LastName = $User['LastName'];
+        $Telephone = $User['Telephone'];
+        $Address = $User['Address'];
+        $City = $User['City'];
+        $Mail = $User['Mail'];
+        $PasswordEn = password_hash($User['Password'], PASSWORD_DEFAULT, ['cost' => 5]);
+        $query = "
+        INSERT INTO public.tbl_user(name, last_name, phone, address, city, mail, password)
+        	VALUES ('$Name', '$LastName', $Telephone, '$Address', '$City', '$Mail', '$PasswordEn')";
         $response = dbc::Insert($query);
         return $response;
     }
 
     public static function getUsers(){
-        $query = "SELECT * FROM usuario";
+        $query = "SELECT * FROM public.tbl_user";
         $response = dbc::Query($query);
         return $response;
     }
 
     public static function getSingleUser($param){
         $id = $param;
-        $query = "Select * from usuario where Id = $id";
+        $query = "Select * from public.tbl_user where Id = $id";
         $response = dbc::Query($query);
         return $response;
     }
@@ -96,7 +98,7 @@ class User {
 
     public static function deleteUser($param){
         $id = $param;
-        $query = "Delete from usuario where Id = $id";
+        $query = "Delete from public.tbl_user where Id = $id";
         $response = dbc::Query($query);
         return $response;
     }
