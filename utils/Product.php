@@ -11,32 +11,27 @@ class Product {
         $Description = $Product['Description'];
         $Image = $Product['Image'];
         $Price = $Product['Price'];
-        $FlavorId = $Product['FlavorId'];
-        $SizeId = $Product['SizeId'];
-        $FillId = $Product['FillId'];
-        $ConfigurationId = $Product['ConfigurationId'];
-        $ShapeId = $Product['ShapeId'];
 
-        $query = "CALL Agregar_Producto('$Name', '$Description', '$Image', '$Price', '$FlavorId', '$SizeId', '$FillId', '$ConfigurationId', '$ShapeId')";
+        $query = "INSERT INTO public.tbl_product( name, description,image, price) VALUES ($Name, $Description, $Image, $Price)";
         $response = dbc::Insert($query);
         return $response;
     }
 
     public static function getProducts(){
-        $query = "SELECT * FROM products";
+        $query = "SELECT * FROM public.tbl_product";
         $response = dbc::Query($query);
         return $response;
     }
 
     public static function getSingleProduct($param){
         $id = $param;
-        $query = "Select * from products where id = $id";
+        $query = "Select * from public.tbl_product where id = $id";
         $response = dbc::Query($query);
         return $response;
     }
     public static function deleteUser($param){
         $id = $param;
-        $query = "Delete from products where id = $id";
+        $query = "Delete from public.tbl_product where id = $id";
         $response = dbc::Query($query);
         return $response;
     }

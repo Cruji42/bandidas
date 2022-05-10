@@ -77,8 +77,7 @@ class ProductController {
     private function validateProduct($input)
     {
         if (! isset($input['Name']) || ! isset($input['Description']) || ! isset($input['Image']) ||
-            ! isset($input['Price']) || ! isset($input['FlavorId']) || ! isset($input['SizeId']) || ! isset($input['FillId'])
-            || ! isset($input['ConfigurationId']) || ! isset($input['ShapeId']) ) {
+            ! isset($input['Price'])) {
             return false;
         }
         return true;
