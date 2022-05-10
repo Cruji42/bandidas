@@ -16,7 +16,7 @@ include_once 'utils/headers.php';
 $uri = explode("/", substr(@$_SERVER['PHP_SELF'],1));
 
 if (implode($uri) != "bandidasindex.php"){
-    echo($uri);
+    echo(implode($uri));
     $URL = rtrim($uri[2],'.php');
 }else{
     $URL = "HOME";
