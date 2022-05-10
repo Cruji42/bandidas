@@ -12,7 +12,8 @@ class Product {
         $Image = $Product['Image'];
         $Price = $Product['Price'];
 
-        $query = "INSERT INTO public.tbl_product( name, description,image, price) VALUES ($Name, $Description, $Image, $Price)";
+        $query = "INSERT INTO public.tbl_product( name, description,image, price) VALUES ('$Name', '$Description',
+         '$Image', $Price)";
         $response = dbc::Insert($query);
         return $response;
     }

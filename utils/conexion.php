@@ -5,7 +5,7 @@ class Conexion
 {
     public static function DB_Conect(){
     /*
-    Local Enviroment
+    //Local Enviroment
      $servername = 'localhost';
      $port = '5433';
      $username = 'postgres';
@@ -13,11 +13,14 @@ class Conexion
      $dbName = 'db_bandidas';
     */
 
+    
+    //Production 
     $servername = 'ec2-18-214-134-226.compute-1.amazonaws.com';
     $port = '5432';
     $username = 'hhgxtnvfxdzgps';
     $password = '87a7ce60332c880facc0cbd773cf4fa4bec48e6e21b9dbc39d5fe83f941d1a9f';
     $dbName = 'd4qdb84j4sgs6o';
+    
 
      $conn = pg_connect("host=$servername port=$port dbname=$dbName user=$username password=$password");
      return $conn;
