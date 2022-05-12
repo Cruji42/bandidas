@@ -6294,7 +6294,10 @@ h6 {
   )
 }
 
-
+.card-login {
+  background-color: rgba(0,0,0,0.5) !important
+  
+}
 
 .bg-opacity-50{
   background: linear-gradient(
@@ -6315,6 +6318,47 @@ h6 {
     rgba(255, 255, 255, 0.9), 
     rgba(255, 255, 255, 0.9)
   )
+}
+
+.logo-login{
+  width: 175px;
+}
+.input-login{
+  background: transparent;
+  border: 1px solid #F2C64D;
+  width: 60%;
+  height: 40px;
+}
+
+.input-login ::placeholder{
+  margin-left: 1rem;
+}
+
+.input-group-prepend{
+  height: 40px;
+}
+
+.input-group-prepend span{
+  background-color: #FFC312;
+  color: black;
+  border:0 !important;
+  border-radius: 0;
+  }
+
+.button-login:hover{
+  color: white
+}
+
+.register-link{
+  color: #FFC312;
+}
+
+.register-link a{
+  color: #FFC312;
+}
+
+.register-link a:hover{
+  color: white;
 }
 
 /*# sourceMappingURL=style.css.map */
