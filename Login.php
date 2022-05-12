@@ -13,8 +13,7 @@ $request = json_decode($postdata);
 if($Email != '' && $Password != ''){
     $query = " select * from public.tbl_user where mail= '$Email'";
     $result = dbc::Query($query);
-    echo json_encode($result);
-    if ($result[0] == 'empty'){
+    if ($result[0] == null){
         echo json_encode('Usuario incorrecto');
     }else{
         if(password_verify($Password, $result[0]['password'])) {
