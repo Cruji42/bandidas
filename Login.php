@@ -2,7 +2,7 @@
 require "vendor/autoload.php";
 include_once "utils/headers.php";
 use DBC\Conexion as dbc;
-use AUTH\Auth as token;
+use auth\Auth as token;
 
 $postdata = file_get_contents("php://input");
 $request = json_decode($postdata);
