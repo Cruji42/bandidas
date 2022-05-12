@@ -13,8 +13,9 @@ $request = json_decode($postdata);
 if($Email != '' && $Password != ''){
     $query = " select * from public.tbl_user where mail= '$Email'";
     $result = dbc::Query($query);
-    if ($result[0] == null){
-        echo json_encode('Usuario incorrecto');
+    if (count($result) == 0){
+        $data=['success' => 0, 'message' => "Usuario Incorrecto"];
+        echo json_encode($data);
     }else{
         if(password_verify($Password, $result[0]['password'])) {
             $tokenData = [
@@ -25,9 +26,11 @@ if($Email != '' && $Password != ''){
             $data=['success' => 1, 'token' => $token, 'id' => $result[0]['id']];
             echo json_encode($data, JSON_UNESCAPED_UNICODE);
         }else{
-            echo json_encode('Error de contraseña');
+            $data=['success' => 0, 'message' => "Contraseña Incorrecta"];
+            echo json_encode($data);
         }
     }
 }else{
-    echo json_encode('Llena todos los campos');
+    $data=['success' => 0, 'message' => "LLena todos los campos"];
+    echo json_encode($data);
 }

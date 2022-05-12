@@ -48,6 +48,7 @@ class Conexion
     //Usefull with Login
     public static function Query($query){
         $conexion = self::DB_Conect();
+        $arreglo = [];
         if ($conexion){
             //mysqli_set_charset($conexion,"utf8");
             if (! $result = pg_query($conexion, $query)) die();
