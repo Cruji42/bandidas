@@ -64,7 +64,7 @@
                                 <button class="btn pl-5 pr-5 ml-5 mr-5 btn-outline-warning button-login" onclick="login()" >Entrar</button>
                             </div>
                             <div class="d-flex align-item-center justify-content-center mb-5">
-                                <span class="register-link">¿No tienes cuenta aun? <a href="/">Registrate aquí</a></span>
+                                <span class="register-link">¿No tienes cuenta aun? <a href="./register.html">Registrate aquí</a></span>
                             </div>
                         </div>
                     </div>
@@ -75,6 +75,7 @@
 
     </body>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         function login () {
             $.ajax({
@@ -84,6 +85,18 @@
                 contentType: "application/json",
                 success: function (result, status) {
                             console.log(result);
+                            if( result.success === 1){
+                                localStorage.setItem("token", result.token);
+                                location.href = './index.html';
+                            } else {
+                                Swal.fire({
+                                title: 'Error',
+                                text: result.message,
+                                icon: 'error',
+                                confirmButtonText: 'Aceptar',
+                                confirmButtonColor: '#F2C64D'
+                                }) 
+                            }
                          },
                 error: function (error, status) {
                             console.log(error);
