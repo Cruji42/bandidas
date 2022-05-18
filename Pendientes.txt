@@ -1,0 +1,32 @@
+mantener el user name en todas las pestañas
+revisar lo de la resolución 
+al moverte entre pestañas el logo se sobrepone
+eliminar apartado de pages, blog
+agregar boton de ordenar a cada producto
+traer los productos desde la db
+
+
+
+voy a recibir el json
+
+[{"product_id":1,"amount":1,"comments":"N/A"},{"product_id":1,"amount":1,"comments":"N/A"}]
+
+
+
+tbl_orders
+{
+"id",
+"order_code",
+"delivery_date",
+"creation_date",
+"status"}
+
+order_products
+{
+"id"
+"product_id"
+"order_id"
+"amount"
+"comment"
+"subtotal"
+}
