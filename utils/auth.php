@@ -1,6 +1,6 @@
 <?php
 
-namespace auth;
+namespace AUTH;
 use \Firebase\JWT\JWT;
 class Auth {
 

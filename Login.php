@@ -24,7 +24,8 @@ if($Email != '' && $Password != ''){
             ];
             $token = Token::TokenGenerate($tokenData);
             $data=['success' => 1, 'token' => $token, 'id' => $result[0]['id']];
-            echo json_encode($data, JSON_UNESCAPED_UNICODE);
+            //echo json_encode($data, JSON_UNESCAPED_UNICODE);
+            echo json_encode($data);
         }else{
             $data=['success' => 0, 'message' => "Contraseña Incorrecta"];
             echo json_encode($data);
