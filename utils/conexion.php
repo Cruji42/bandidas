@@ -53,7 +53,7 @@ class Conexion
             //mysqli_set_charset($conexion,"utf8");
             if (! $result = pg_query($conexion, $query)) die();
             while($data = pg_fetch_assoc($result)){
-                $arreglo = [$data];
+                $arreglo[] = $data;
 //                $arreglo[0] = $data;
             }
             return $arreglo;
