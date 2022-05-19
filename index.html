@@ -141,8 +141,9 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-xl-6 col-md-6 col-lg-6">
+            <div class="row" id="product_Menu">
+
+                <!-- <div class="col-xl-6 col-md-6 col-lg-6">
                     <div class="single_delicious d-flex align-items-center">
                         <div class="thumb">
                             <img src="img/burger/1.png" alt="">
@@ -239,14 +240,7 @@
                             <span>$5</span>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="iteam_links">
-                        <a class="boxed-btn5" href="Menu.html">More Items</a>
-                    </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
@@ -614,12 +608,31 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
         if(token){
             let data_user = parseJwt(token);
             console.log(data_user.data.name);
-            content = ' <a class="#" href="./login.html" onClick="clearStorage()"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16"><path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/><path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/></svg>' + data_user.data.name + '</a>'
+            content =  '<ul id="navigation"><li><a href="#">'+  data_user.data.name +' <i class="ti-angle-down"></i></a><ul class="submenu"><li><a onClick="clearStorage()">Cerrar sesión</a></li><li><a href="single-blog.html">single-blog</a></li></ul></li></ul>'
         } else if(token === null || token === undefined) {
             content = '<a class="#" href="./login.html">Inicia sesión</a>';
         }
         
         div_log.insertAdjacentHTML('afterbegin', content);
+
+        var html_Menu = "";
+        var div_product_Menu = document.getElementById("product_Menu");
+        $.ajax({
+                type: "GET",
+                url: "https://bandidas.herokuapp.com/index.php/PRODUCT",
+                success: function (result, status) {
+                            console.log(result);
+                            result.forEach(element => {
+                                html_Menu = html_Menu + '<div class=" col-md-6 col-lg-6"><div class="single_delicious d-flex align-items-center"><div class="thumb"><img src="'+ element.image +'" width="250px" height="165px" alt=""></div><div class="info"><h3>'+ element.name +'</h3><p>'+ element.description +'</p><div class="row"> <span class="col-2">$'+ element.price +'</span> <a href="#" class="boxed-btn3 col-7 offset-1">Order Now</a></div></div></div></div>'
+                            });
+                            console.log("/////////////////////");
+                            console.log(html_Menu);
+                            div_product_Menu.insertAdjacentHTML('afterbegin',html_Menu);
+                         },
+                error: function (error, status) {
+                            console.log(error);
+                        }
+            })
     </script>
 
 </body>

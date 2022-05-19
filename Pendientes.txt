@@ -1,9 +1,7 @@
-mantener el user name en todas las pestañas
+Acomodar style de submenu login
 revisar lo de la resolución 
 al moverte entre pestañas el logo se sobrepone
-eliminar apartado de pages, blog
-agregar boton de ordenar a cada producto
-traer los productos desde la db
+revisar un boton de order
 
 
 
