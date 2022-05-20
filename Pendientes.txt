@@ -1,6 +1,7 @@
 Acomodar style de submenu login
 revisar lo de la resolución 
 revisar un boton de order
+que no te deje ordenar cuando estes deslogueado
 
 
 
