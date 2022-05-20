@@ -6382,4 +6382,8 @@ h6 {
   color: white;
 }
 
+.modal-backdrop{
+  /* position: absolute !important; */
+  z-index: 1049;
+}
 /*# sourceMappingURL=style.css.map */

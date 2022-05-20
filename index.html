@@ -142,105 +142,6 @@
                 </div>
             </div>
             <div class="row" id="product_Menu">
-
-                <!-- <div class="col-xl-6 col-md-6 col-lg-6">
-                    <div class="single_delicious d-flex align-items-center">
-                        <div class="thumb">
-                            <img src="img/burger/1.png" alt="">
-                        </div>
-                        <div class="info">
-                            <h3>Beefy Burgers</h3>
-                            <p>Great way to make your business appear trust and relevant.</p>
-                            <span>$5</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-6">
-                    <div class="single_delicious d-flex align-items-center">
-                        <div class="thumb">
-                            <img src="img/burger/2.png" alt="">
-                        </div>
-                        <div class="info">
-                            <h3>Burger Boys</h3>
-                            <p>Great way to make your business appear trust and relevant.</p>
-                            <span>$5</span>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="col-lg-6 col-md-6">
-                    <div class="single_delicious d-flex align-items-center">
-                        <div class="thumb">
-                            <img src="img/burger/3.png" alt="">
-                        </div>
-                        <div class="info">
-                            <h3>Burger Bizz</h3>
-                            <p>Great way to make your business appear trust and relevant.</p>
-                            <span>$5</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-6 col-md-6 col-lg-6">
-                    <div class="single_delicious d-flex align-items-center">
-                        <div class="thumb">
-                            <img src="img/burger/4.png" alt="">
-                        </div>
-                        <div class="info">
-                            <h3>Crackles Burger</h3>
-                            <p>Great way to make your business appear trust and relevant.</p>
-                            <span>$5</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6">
-                    <div class="single_delicious d-flex align-items-center">
-                        <div class="thumb">
-                            <img src="img/burger/5.png" alt="">
-                        </div>
-                        <div class="info">
-                            <h3>Bull Burgers</h3>
-                            <p>Great way to make your business appear trust and relevant.</p>
-                            <span>$5</span>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="col-lg-6 col-md-6">
-                    <div class="single_delicious d-flex align-items-center">
-                        <div class="thumb">
-                            <img src="img/burger/6.png" alt="">
-                        </div>
-                        <div class="info">
-                            <h3>Rocket Burgers</h3>
-                            <p>Great way to make your business appear trust and relevant.</p>
-                            <span>$5</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6">
-                    <div class="single_delicious d-flex align-items-center">
-                        <div class="thumb">
-                            <img src="img/burger/7.png" alt="">
-                        </div>
-                        <div class="info">
-                            <h3>Smokin Burger</h3>
-                            <p>Great way to make your business appear trust and relevant.</p>
-                            <span>$5</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6">
-                    <div class="single_delicious d-flex align-items-center">
-                        <div class="thumb">
-                            <img src="img/burger/8.png" alt="">
-                        </div>
-                        <div class="info">
-                            <h3>Delish Burger</h3>
-                            <p>Great way to make your business appear trust and relevant.</p>
-                            <span>$5</span>
-                        </div>
-                    </div>
-                </div> -->
             </div>
         </div>
     </div>
@@ -468,6 +369,39 @@
     </div>
     <!-- instragram_area_end -->
 
+    <!-- Modal html -->
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">ORDENAR</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="form-group">
+                  <label for="recipient-name" class="col-form-label">Cantidad</label>
+                  <input type="number" min="1"  pattern="^[1-9]+" class="form-control" value="1" id="amount">
+                </div>
+                <div class="form-group">
+                  <label for="message-text" class="col-form-label">Comentarios</label>
+                  <textarea class="form-control" placeholder="Sin salsa..." id="message-text"></textarea>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger btn-small" data-dismiss="modal">Cancelar</button>
+              <button type="button" class="btn text-white btn-warning btn-small">Agregar al carrito</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <!--Modal html end-->
+
     <footer class="footer">
             <div class="footer_top">
                 <div class="container">
@@ -585,6 +519,8 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <script src="js/main.js"></script>
     
     <script>
+
+
         var token = localStorage.getItem('token');
         console.log(token);
 
@@ -623,7 +559,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
                 success: function (result, status) {
                             console.log(result);
                             result.forEach(element => {
-                                html_Menu = html_Menu + '<div class=" col-md-6 col-lg-6"><div class="single_delicious d-flex align-items-center"><div class="thumb"><img src="'+ element.image +'" width="250px" height="165px" alt=""></div><div class="info"><h3>'+ element.name +'</h3><p>'+ element.description +'</p><div class="row"> <span class="col-2">$'+ element.price +'</span> <a href="#" class="boxed-btn3 col-7 offset-1">Order Now</a></div></div></div></div>'
+                                html_Menu = html_Menu + '<div class=" col-md-6 col-lg-6"><div class="single_delicious d-flex align-items-center"><div class="thumb"><img src="'+ element.image +'" width="250px" height="165px" alt=""></div><div class="info"><h3>'+ element.name +'</h3><p>'+ element.description +'</p><div class="row"> <span class="col-2">$'+ element.price +'</span> <a href="#" data-toggle="modal" data-target="#exampleModal" class="boxed-btn3 col-7 offset-1">Ordenar ahora</a></div></div></div></div>'
                             });
                             console.log("/////////////////////");
                             console.log(html_Menu);
