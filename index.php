@@ -14,9 +14,8 @@ include_once 'utils/headers.php';
 //get the name of the archive clean
 //we init the string without the ip
 $uri = explode("/", substr(@$_SERVER['PHP_SELF'],1));
-
 if (implode($uri) != "index.php"){
-    $URL = rtrim($uri[1],'.php');
+    $URL = rtrim($uri[1],'.php'); //remember to change this option to 2 when working on local enviroment
 }else{
     $URL = "HOME";
 }
