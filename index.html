@@ -44,14 +44,14 @@
                                     <ul id="navigation">
                                         <li><a class="active" href="index.html">home</a></li>
                                         <li><a href="Menu.html">Menu</a></li>
-                                        <li><a href="about.html">About</a></li>
-                                        <li><a href="#">blog <i class="ti-angle-down"></i></a>
+                                        <li><a href="about.html">Conócenos</a></li>
+                                        <!-- <li><a href="#">blog <i class="ti-angle-down"></i></a>
                                             <ul class="submenu">
                                                 <li><a href="blog.html">blog</a></li>
                                                 <li><a href="single-blog.html">single-blog</a></li>
                                             </ul>
-                                        </li>
-                                        <li><a href="contact.html">Contact</a></li>
+                                        </li> -->
+                                        <!-- <li><a href="contact.html">Contact</a></li> -->
                                     </ul>
                                 </nav>
                             </div>
@@ -136,8 +136,8 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section_title text-center mb-80">
-                        <span>Burger Menu</span>
-                        <h3>Best Ever Burgers</h3>
+                        <span>Snacks Menu</span>
+                        <h3>LOS MEJORES SNACKS</h3>
                     </div>
                 </div>
             </div>
@@ -195,13 +195,13 @@
                     <div class="col-xl-5 col-lg-5 offset-lg-1 col-md-6">
                         <div class="about_info">
                             <div class="section_title mb-20px">
-                                <span>About Us</span>
-                                <h3>Best Burger <br>
-                                        in your City</h3>
+                                <span>Conócenos</span>
+                                <h3>"Las BANDIDAS” <br>
+                                        en tu ciudad</h3>
                             </div>
-                            <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate</p>
+                            <p>Este proyecto llamado “LAS BANDIDAS” nació de una idea la cual consiste en prepararsnacks tipo feria, es decir, son botanas que a la gente les gusta y además de que a la mayoríade jóvenes adultos les gusta lo salado: según un estudio realizado por consumolab un 50% deese sector prefiere snacks salados.Este proyecto se creó ya que ese tipo de snacks (banderillas, banderillas rellenas, etc)normalmente solo se venden en las ferias y muy pocos negocios de comida las preparan conesa finalidad, es por ello que vimos la oportunidad de crearlo.</p>
                             <div class="img_thumb">
-                                <img src="img/jessica-signature.png" alt="">
+                                <img src="img/logo.png" alt="">
                             </div>
                         </div>
                     </div>
@@ -230,9 +230,9 @@
                     <div class="row">
                         <div class="col-xl-12">
                                 <div class="section_title mb-60 text-center">
-                                        <span>Testimonials</span>
-                                        <h3>Happy Customers</h3>
-                                    </div>
+                                    <span>Experiencias</span>
+                                    <h3>Clientes Satisfechos</h3>
+                                </div>
                         </div>
                     </div>
                     <div class="row">
@@ -242,10 +242,9 @@
                                     <div class="row justify-content-center">
                                         <div class="col-lg-8">
                                             <div class="single_testmonial text-center">
-                                                <p>“Donec imperdiet congue orci consequat mattis. Donec rutrum porttitor
-                                                    sollicitudin. Pellentesque id dolor tempor sapien feugiat ultrices nec
-                                                    sed
-                                                    neque.</p>
+                                                <p>Excelente servicio, la preparación de los productos se hace con ingredientes frescos
+                                                    y ademas tienen de mi salsa favorita.
+                                                </p>
                                                 <div class="testmonial_author">
                                                     <div class="thumb">
                                                         <img src="img/testmonial/1.png" alt="">
@@ -267,10 +266,7 @@
                                     <div class="row justify-content-center">
                                         <div class="col-lg-8">
                                             <div class="single_testmonial text-center">
-                                                <p>“Donec imperdiet congue orci consequat mattis. Donec rutrum porttitor
-                                                    sollicitudin. Pellentesque id dolor tempor sapien feugiat ultrices nec
-                                                    sed
-                                                    neque.</p>
+                                                <p>Las salchipapas y los doriesquites son lo mejor, sin duda mis snacks favoritos</p>
                                                 <div class="testmonial_author">
                                                     <div class="thumb">
                                                         <img src="img/testmonial/2.png" alt="">
@@ -292,10 +288,8 @@
                                     <div class="row justify-content-center">
                                         <div class="col-lg-8">
                                             <div class="single_testmonial text-center">
-                                                <p>“Donec imperdiet congue orci consequat mattis. Donec rutrum porttitor
-                                                    sollicitudin. Pellentesque id dolor tempor sapien feugiat ultrices nec
-                                                    sed
-                                                    neque.</p>
+                                                <p>Después de un largo día de trabajo, nada como disfrutar de unos ricos
+                                                    dorilocos de #LasBandidas </p>
                                                 <div class="testmonial_author">
                                                     <div class="thumb">
                                                         <img src="img/testmonial/3.png" alt="">
@@ -388,13 +382,13 @@
                 </div>
                 <div class="form-group">
                   <label for="message-text" class="col-form-label">Comentarios</label>
-                  <textarea class="form-control" placeholder="Sin salsa..." id="message-text"></textarea>
+                  <textarea class="form-control" placeholder="Sin salsa..." id="comments"></textarea>
                 </div>
               </form>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-danger btn-small" data-dismiss="modal">Cancelar</button>
-              <button type="button" class="btn text-white btn-warning btn-small">Agregar al carrito</button>
+              <button type="button" class="btn btn-danger btn-small" data-dismiss="modal" onclick="clearModal()">Cancelar</button>
+              <button type="button" class="btn text-white btn-warning btn-small" data-dismiss="modal"  onclick="addToOrder()">Agregar al carrito</button>
             </div>
           </div>
         </div>
@@ -544,7 +538,8 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
         if(token){
             let data_user = parseJwt(token);
             console.log(data_user.data.name);
-            content =  '<ul id="navigation"><li><a href="#">'+  data_user.data.name +' <i class="ti-angle-down"></i></a><ul class="submenu"><li><a onClick="clearStorage()">Cerrar sesión</a></li><li><a href="single-blog.html">single-blog</a></li></ul></li></ul>'
+            // content =  '<ul id="navigation"><li><a href="#">'+  data_user.data.name +' <i class="ti-angle-down"></i></a><ul class="submenu"><li><a onClick="clearStorage()">Cerrar sesión</a></li><li><a href="single-blog.html">single-blog</a></li></ul></li></ul>'
+            content = '<a class="#" href="./login.html" onClick="return clearStorage()" >Cerrar sesión</a>'
         } else if(token === null || token === undefined) {
             content = '<a class="#" href="./login.html">Inicia sesión</a>';
         }
@@ -559,7 +554,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
                 success: function (result, status) {
                             console.log(result);
                             result.forEach(element => {
-                                html_Menu = html_Menu + '<div class=" col-md-6 col-lg-6"><div class="single_delicious d-flex align-items-center"><div class="thumb"><img src="'+ element.image +'" width="250px" height="165px" alt=""></div><div class="info"><h3>'+ element.name +'</h3><p>'+ element.description +'</p><div class="row"> <span class="col-2">$'+ element.price +'</span> <a href="#" data-toggle="modal" data-target="#exampleModal" class="boxed-btn3 col-7 offset-1">Ordenar ahora</a></div></div></div></div>'
+                                html_Menu = html_Menu + '<div class=" col-md-6 col-lg-6"><div class="single_delicious d-flex align-items-center"><div class="thumb"><img src="'+ element.image +'" width="250px" height="165px" alt=""></div><div class="info"><h3>'+ element.name +'</h3><p>'+ element.description +'</p><div class="row"> <span class="col-2">$'+ element.price +'</span> <a href="#" onclick="return getId('+ element.id +')" data-toggle="modal" data-target="#exampleModal" class="boxed-btn3 col-7 offset-1">Ordenar ahora</a></div></div></div></div>'
                             });
                             console.log("/////////////////////");
                             console.log(html_Menu);
@@ -569,6 +564,33 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
                             console.log(error);
                         }
             })
+
+        var id_product;
+        var data_order = [];
+
+        function getId(id){
+            id_product = id;
+        }
+
+        function addToOrder(){
+            console.log(id_product);
+            let array_order = {
+                product_id : id_product,
+                amount: document.getElementById('amount').value,
+                comment: document.getElementById('comments').value
+            }
+
+            data_order.push(array_order);
+            console.log(data_order);
+            clearModal();
+
+        }
+
+        function clearModal(){
+            document.getElementById('amount').value = 1;
+            document.getElementById('comments').value = "";
+        }
+
     </script>
 
 </body>
