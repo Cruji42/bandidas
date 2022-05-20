@@ -1,6 +1,5 @@
 Acomodar style de submenu login
 revisar lo de la resolución 
-al moverte entre pestañas el logo se sobrepone
 revisar un boton de order
 
 
