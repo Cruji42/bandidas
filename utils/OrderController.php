@@ -94,11 +94,7 @@ class OrderController {
 
     private function validateOrder($input)
     {
-        if (! isset($input['FechaEntrega']) || ! isset($input['ClienteId']) ||
-            ! isset($input['ProductoCant']) || ! isset($input['ProductImporte'])
-            || ! isset($input['ProductoDecoracion']) || ! isset($input['ProductoTamano'])
-            || ! isset($input['ProductoSabor']) || ! isset($input['ProductoRelleno'])
-            || ! isset($input['ProductoExtra'])
+        if (! isset($input['user_id']) || ! isset($input['order'])
         ) {
             return false;
         }

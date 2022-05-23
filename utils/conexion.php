@@ -38,7 +38,7 @@ class Conexion
         $conexion = self::DB_Conect();
         if ($conexion){
             //mysqli_set_charset($conexion,"utf8");
-            if (! $result = pg_query($conexion, $query)) die(json_encode('DB query Error'));
+            if (! $result = pg_query($conexion, $query)) die(json_encode($query));
             return 'success';
         }else{
             die('DB connection error');

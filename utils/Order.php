@@ -10,31 +10,23 @@ class Order {
     public static function add($Product){
 
 
-        $Cliente = $Product['ClienteId'];
-        $Fecha = date_format(date_create($Product['FechaEntrega']), "Y-m-d H:i:s");
-        $Cantidad = $Product['ProductoCant'];
-        $Importe = $Product['ProductImporte'];
-        $Decoracion = $Product['ProductoDecoracion'];
-        $Tamano = $Product['ProductoTamano'];
-        $Sabor = $Product['ProductoSabor'];
-        $Relleno = $Product['ProductoRelleno'];
-        $Extra = $Product['ProductoExtra'];
-
-
-        $query = "CALL Crear_Orden('$Fecha', '$Cliente', '$Cantidad', '$Importe', '$Decoracion', '$Tamano', '$Sabor', '$Relleno', '$Extra')";
+        $Client_id = $Product['user_id'];
+        $Items = json_encode($Product['order']);
+        
+        $query = 'SELECT create_order('.$Client_id.', \' '.$Items.'\')';
         $response = dbc::Insert($query);
         return $response;
     }
 
     public static function get(){
-        $query = "SELECT * FROM orden";
+        $query = "SELECT * FROM tbl_order";
         $response = dbc::Query($query);
         return $response;
     }
 
     public static function getSingle($param){
         $id = $param;
-        $query = "call Obtener_Pedido('$id')";
+        $query = "select * from tbl_order where id ='$id'";
         $response = dbc::Query($query);
         return $response;
     }

@@ -45,7 +45,7 @@ switch ($URL){
         $controller->processRequest($requestMethod, $productId);
         break;
 
-    case 'STORE':
+    case 'ORDER':
         $postdata = file_get_contents("php://input");
         $request = json_decode($postdata);
         @$Id = $request-> id;
