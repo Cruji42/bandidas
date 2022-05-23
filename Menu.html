@@ -476,7 +476,11 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
                 success: function (result, status) {
                             console.log(result);
                             result.forEach(element => {
-                                html_Menu = html_Menu + '<div class=" col-md-6 col-lg-6"><div class="single_delicious d-flex align-items-center"><div class="thumb"><img src="'+ element.image +'" width="250px" height="165px" alt=""></div><div class="info"><h3>'+ element.name +'</h3><p>'+ element.description +'</p><div class="row"> <span class="col-2">$'+ element.price +'</span> <a href="#" onclick="return getId('+ element.id +')" data-toggle="modal" data-target="#exampleModal" class="boxed-btn3 col-7 offset-1">Ordenar ahora</a></div></div></div></div>'
+                                if(token) {
+                                    html_Menu = html_Menu + '<div class=" col-md-6 col-lg-6"><div class="single_delicious d-flex align-items-center"><div class="thumb"><img src="'+ element.image +'" width="250px" height="165px" alt=""></div><div class="info"><h3>'+ element.name +'</h3><p>'+ element.description +'</p><div class="row"> <span class="col-2">$'+ element.price +'</span> <a href="#" onclick="return getId('+ element.id +')" data-toggle="modal" data-target="#exampleModal" class="boxed-btn3 col-7 offset-1">Ordenar ahora</a></div></div></div></div>'
+                                } else if( token === null || token === undefined){
+                                    html_Menu = html_Menu + '<div class=" col-md-6 col-lg-6"><div class="single_delicious d-flex align-items-center"><div class="thumb"><img src="'+ element.image +'" width="250px" height="165px" alt=""></div><div class="info"><h3>'+ element.name +'</h3><p>'+ element.description +'</p><div class="row"> <span class="col-2">$'+ element.price +'</span></div></div></div></div>'
+                                }
                             });
                             console.log("/////////////////////");
                             console.log(html_Menu);

@@ -1,4 +1,4 @@
-Acomodar style de submenu login
+Acomodar style y html de submenu login ***
 revisar lo de la resolución 
 revisar un boton de order
 que no te deje ordenar cuando estes deslogueado
@@ -7,6 +7,8 @@ que no te deje ordenar cuando estes deslogueado
 
 METHOD: POST
 URL: https://bandidas.herokuapp.com/index.php/ORDER
+
+JSON to create order
 
 {
 "user_id":12,

@@ -64,8 +64,10 @@
                             </div>
                         </div>
                         <div class="col-xl-5 col-lg-5 d-none d-lg-block">
-                            <div class="book_room">
-                                <div class="socail_links">
+                            <div class="row book_room">
+                                
+
+                                <div class="socail_links col-4 offset-1">
                                     <ul>
                                         <li>
                                             <a href="#">
@@ -79,9 +81,21 @@
                                         </li>
                                     </ul>
                                 </div>
-                                <div class="book_btn  d-xl-block" id="log_button">
-                                   
+
+                                <div class="dropdown col-6">
+                                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                        prueba
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="#">Link 1</a>
+                                        <a class="dropdown-item" href="#">Link 2</a>
+                                        <a class="dropdown-item" href="#">Link 3</a>
+                                    </div>
                                 </div>
+                                    <!-- <div class="book_btn  d-xl-block" id="log_button">
+                                       
+                                    </div> -->
+
                             </div>
                         </div>
                         <div class="col-12">
@@ -527,7 +541,6 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
         if(token){
             let data_user = parseJwt(token);
-            console.log(data_user.data.name);
             // content =  '<ul id="navigation"><li><a href="#">'+  data_user.data.name +' <i class="ti-angle-down"></i></a><ul class="submenu"><li><a onClick="clearStorage()">Cerrar sesión</a></li><li><a href="single-blog.html">single-blog</a></li></ul></li></ul>'
             content = '<a class="#" href="./login.html" onClick="return clearStorage()" >Cerrar sesión</a>'
         } else if(token === null || token === undefined) {
@@ -542,9 +555,13 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
                 type: "GET",
                 url: "https://bandidas.herokuapp.com/index.php/PRODUCT",
                 success: function (result, status) {
-                            console.log(result);
                             result.forEach(element => {
-                                html_Menu = html_Menu + '<div class=" col-md-6 col-lg-6"><div class="single_delicious d-flex align-items-center"><div class="thumb"><img src="'+ element.image +'" width="250px" height="165px" alt=""></div><div class="info"><h3>'+ element.name +'</h3><p>'+ element.description +'</p><div class="row"> <span class="col-2">$'+ element.price +'</span> <a href="#" onclick="return getId('+ element.id +')" data-toggle="modal" data-target="#exampleModal" class="boxed-btn3 col-7 offset-1">Ordenar ahora</a></div></div></div></div>'
+                                if(token) {
+                                    html_Menu = html_Menu + '<div class=" col-md-6 col-lg-6"><div class="single_delicious d-flex align-items-center"><div class="thumb"><img src="'+ element.image +'" width="250px" height="165px" alt=""></div><div class="info"><h3>'+ element.name +'</h3><p>'+ element.description +'</p><div class="row"> <span class="col-2">$'+ element.price +'</span> <a href="#" onclick="return getId('+ element.id +')" data-toggle="modal" data-target="#exampleModal" class="boxed-btn3 col-7 offset-1">Ordenar ahora</a></div></div></div></div>'
+                                } else if( token === null || token === undefined){
+                                    html_Menu = html_Menu + '<div class=" col-md-6 col-lg-6"><div class="single_delicious d-flex align-items-center"><div class="thumb"><img src="'+ element.image +'" width="250px" height="165px" alt=""></div><div class="info"><h3>'+ element.name +'</h3><p>'+ element.description +'</p><div class="row"> <span class="col-2">$'+ element.price +'</span></div></div></div></div>'
+                                }
+                                
                             });
                             console.log("/////////////////////");
                             console.log(html_Menu);
