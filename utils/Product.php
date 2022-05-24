@@ -1,5 +1,5 @@
 <?php
-namespace PDT;
+namespace PD;
 //This document contains the functions that can be used in the class (CRUD)
 include_once ("headers.php");
 use DBC\Conexion as dbc;
