@@ -403,6 +403,61 @@
 
     <!--Modal html end-->
 
+    <!--Modal carrito de compras start-->
+
+    <div class="modal fade" id="modalShoppingCar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Carrito de compras</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Producto</th>
+        <th scope="col">Cantidad</th>
+        <th scope="col">Observaciones</th>
+        <th scope="col">Precio unitario</th>
+        <th scope="col">Subtotal</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>Jacob</td>
+        <td>Thornton</td>
+        <td>@fat</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>Larry</td>
+        <td>the Bird</td>
+        <td>@twitter</td>
+      </tr>
+    </tbody>
+  </table>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger btn-small" data-dismiss="modal" onclick="clearModal()">Cancelar</button>
+              <button type="button" class="btn text-white btn-warning btn-small" data-dismiss="modal" >Hacer la Orden</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <!--MOdal carrito de compras end-->
+
     <footer class="footer">
         <div class="footer_top">
             <div class="container">
@@ -536,12 +591,12 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
         var div_log = document.getElementById("log_button")
         var content;
+        var id_user;
 
         if(token){
             let data_user = parseJwt(token);
-            // content =  '<ul id="navigation"><li><a href="#">'+  data_user.data.name +' <i class="ti-angle-down"></i></a><ul class="submenu"><li><a onClick="clearStorage()">Cerrar sesión</a></li><li><a href="single-blog.html">single-blog</a></li></ul></li></ul>'
-            // content = '<a class="#" href="./login.html" onClick="return clearStorage()" >Cerrar sesión</a>'
-            content = ' <a type="button" class="btn btn-primary dropdown-toggle btn-user-menu  " data-toggle="dropdown">' + data_user.data.name + '</a><div class="dropdown-menu div-user-menu"><button class="dropdown-item " href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-fill" viewBox="0 0 16 16"><path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/></svg>  Carrito</button><button class="dropdown-item" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-ticket-detailed-fill" viewBox="0 0 16 16"><path d="M0 4.5A1.5 1.5 0 0 1 1.5 3h13A1.5 1.5 0 0 1 16 4.5V6a.5.5 0 0 1-.5.5 1.5 1.5 0 0 0 0 3 .5.5 0 0 1 .5.5v1.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 11.5V10a.5.5 0 0 1 .5-.5 1.5 1.5 0 1 0 0-3A.5.5 0 0 1 0 6V4.5Zm4 1a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 0-1h-7a.5.5 0 0 0-.5.5Zm0 5a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 0-1h-7a.5.5 0 0 0-.5.5ZM4 8a1 1 0 0 0 1 1h6a1 1 0 1 0 0-2H5a1 1 0 0 0-1 1Z"/></svg>  Ordenes</button><hr class="div-user-menu-hr"><button onclick="logout()" class="dropdown-item" style="vertical-align: middle;" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-left" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z"/><path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"/></svg>  Cerrar sesión</button></div>'
+            id_user = data_user.data.id;
+            content = ' <a type="button" class="btn btn-primary dropdown-toggle btn-user-menu  " data-toggle="dropdown">' + data_user.data.name + '</a><div class="dropdown-menu div-user-menu"><button class="dropdown-item " data-toggle="modal" data-target="#modalShoppingCar" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-fill" viewBox="0 0 16 16"><path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/></svg>  Carrito</button><button class="dropdown-item" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-ticket-detailed-fill" viewBox="0 0 16 16"><path d="M0 4.5A1.5 1.5 0 0 1 1.5 3h13A1.5 1.5 0 0 1 16 4.5V6a.5.5 0 0 1-.5.5 1.5 1.5 0 0 0 0 3 .5.5 0 0 1 .5.5v1.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 11.5V10a.5.5 0 0 1 .5-.5 1.5 1.5 0 1 0 0-3A.5.5 0 0 1 0 6V4.5Zm4 1a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 0-1h-7a.5.5 0 0 0-.5.5Zm0 5a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 0-1h-7a.5.5 0 0 0-.5.5ZM4 8a1 1 0 0 0 1 1h6a1 1 0 1 0 0-2H5a1 1 0 0 0-1 1Z"/></svg>  Ordenes</button><hr class="div-user-menu-hr"><button onclick="logout()" class="dropdown-item" style="vertical-align: middle;" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-left" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z"/><path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"/></svg>  Cerrar sesión</button></div>'
         } else if(token === null || token === undefined) {
             content = '<a type="button" class="btn btn-primary  btn-user-menu" href="./login.html">Inicia sesión</a>';
         }
@@ -552,7 +607,8 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
         var div_product_Menu = document.getElementById("product_Menu");
         $.ajax({
                 type: "GET",
-                url: "https://bandidas.herokuapp.com/index.php/PRODUCT",
+                //url: "https://bandidas.herokuapp.com/index.php/PRODUCT",
+                url: "http://localhost/LasBandidas/index.php/PRODUCT",
                 success: function (result, status) {
                             result.forEach(element => {
                                 if(token) {
@@ -579,7 +635,6 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
         }
 
         function addToOrder(){
-            console.log(id_product);
             let array_order = {
                 product_id : id_product,
                 amount: document.getElementById('amount').value,
@@ -587,7 +642,15 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
             }
 
             data_order.push(array_order);
-            console.log(data_order);
+            car_data = localStorage.getItem('shopping_car_'+id_user);
+            if( car_data === null || car_data === undefined){
+                localStorage.setItem('shopping_car_'+id_user, JSON.stringify(data_order));
+            } else {
+                let data_car = JSON.parse(car_data);
+                data_car.push(array_order);
+                localStorage.setItem('shopping_car_'+id_user, JSON.stringify(data_car));
+            }
+            
             clearModal();
 
         }
