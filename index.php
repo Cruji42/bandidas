@@ -6,7 +6,7 @@ include_once 'utils/UserController.php';
 use PController\ProductController;
 include_once 'utils/ProductController.php';
 
-use ORDController\OrderController;
+use OrderController\OrderController;
 include_once 'utils\OrderController.php';
 
 include_once 'utils/headers.php';

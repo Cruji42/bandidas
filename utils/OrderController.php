@@ -1,5 +1,5 @@
 <?php
-namespace ORDController;
+namespace OrderController;
 use ORD\Order;
 include_once 'Order.php';
 
