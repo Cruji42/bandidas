@@ -19,20 +19,26 @@ class Order {
     }
 
     public static function get(){
-        $query = "SELECT * FROM tbl_order";
+        $query = "SELECT t2.name, t3.code, t3.status, t1.amount, (t1.amount * t2.price) as subtotal, t1.comment
+         FROM order_products as t1 join tbl_product as t2 on t1.product_id = t2.id join tbl_order as t3 on t1.order_id = 
+         t3.id ORDER by t3.code";
         $response = dbc::Query($query);
         return $response;
     }
 
     public static function getSingle($param){
         $id = $param;
-        $query = "select * from tbl_order where id ='$id'";
+        $query = "SELECT t2.name, t3.code, t3.status, t1.amount, (t1.amount * t2.price) as subtotal, t1.comment
+         FROM order_products as t1 join tbl_product as t2 on t1.product_id = t2.id join tbl_order as t3 on t1.order_id 
+         = t3.id where t3.id ='$id' ";
         $response = dbc::Query($query);
         return $response;
     }
     public static function delete($param){
         $id = $param;
-        $query = "call eliminarOrden('$id')";
+        $query = "DELETE FROM order_products CASCADE where order_id='$id'";
+        dbc::Insert($query);
+        $query = "DELETE FROM tbl_order where id='$id'";
         dbc::Insert($query);
         return "ok";
     }
