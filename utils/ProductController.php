@@ -1,6 +1,6 @@
 <?php
 namespace PController;
-use PDT\Product;
+use PD\Product;
 include_once 'Product.php';
 
 class ProductController {
