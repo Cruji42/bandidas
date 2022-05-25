@@ -6386,4 +6386,36 @@ h6 {
   /* position: absolute !important; */
   z-index: 1049;
 }
+
+.btn-user-menu{
+  border-radius: 10px;
+  background-color: transparent;
+  border: 1px solid #FFC312;
+  color: #FFC312 !important;
+}
+.btn-user-menu:hover, .show>.btn-primary.dropdown-toggle, .btn-user-menu:focus{
+  background-color: #FFC312;
+  color: white !important;
+}
+.socail_links{
+  padding: 0;
+}
+.book_room{
+  justify-content: flex-start !important;
+}
+.div-user-menu-hr{
+  color: #FFC312;
+  background-color: #FFC312;
+}
+.div-user-menu{
+  background-color: #000;
+  border: solid 1px #FFC312;
+}
+.dropdown-item{
+  color: #FFC312;
+}
+.dropdown-item:hover{
+  background-color: #FFC312;
+  color: white;
+}
 /*# sourceMappingURL=style.css.map */

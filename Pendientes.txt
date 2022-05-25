@@ -1,12 +1,15 @@
-Acomodar style de submenu login
+mostrar los productos en carrito de compras
+agregar la funcion de ordenar
 revisar lo de la resolución 
 revisar un boton de order
-que no te deje ordenar cuando estes deslogueado
+
 
 
 
 METHOD: POST
 URL: https://bandidas.herokuapp.com/index.php/ORDER
+
+JSON to create order
 
 {
 "user_id":12,
