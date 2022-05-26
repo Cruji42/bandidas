@@ -1,5 +1,4 @@
-mostrar los productos en carrito de compras
-agregar la funcion de ordenar
+
 revisar lo de la resolución 
 revisar un boton de order
 
@@ -15,4 +14,25 @@ JSON to create order
 "user_id":12,
 "order":[{"product_id":1,"amount":1,"comments":"N/A"},{"product_id":1,"amount":1,"comments":"N/A"}]
 }
+
+request get orders by user
+
+ [{
+    "code": "cddcasdcsdc",
+    "status": "Processing",
+    "date_create": "12/02/22 12:50am",
+    "products_orden": [
+                        { "name": "papas", "comment: "N/A", "amount": 2, "price": 20},
+                        { "name": "doriesquites", "comment: "N/A", "amount": 1, "price": 30}
+                     ]
+}, 
+    {
+    "code": "cddcasdcsdc",
+    "status": "Processing",
+    "date_create": "12/02/22 12:50am"
+    "products_orden": [
+                        { "name": "papas", "comment: "N/A", "amount": 2, "price": 20},
+                        { "name": "doriesquites", "comment: "N/A", "amount": 1, "price": 30}
+                     ]
+}]
 
