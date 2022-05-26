@@ -25,12 +25,19 @@ class Order {
         $response = dbc::Query($query);
         return $response;
     }
-
+    
+    public static function get_user_orders($param){
+        $id = $param;
+        $query = "SELECT t3.code, t3.status, t3.creation_date, sum(t1.amount * t2.price) as total FROM order_products as t1 join tbl_product as t2 on t1.product_id = t2.id
+         join tbl_order as t3 on t1.order_id = t3.id  where t3.user_id = '$id'group by t3.code,t3.status, t3.creation_date ORDER by t3.code ";
+        $response = dbc::Query($query);
+        return $response;
+    }
     public static function getSingle($param){
         $id = $param;
-        $query = "SELECT t2.name, t3.code, t3.status, t1.amount, (t1.amount * t2.price) as subtotal, t1.comment
+        $query = "SELECT t2.name, t1.amount, (t1.amount * t2.price) as subtotal, t1.comment
          FROM order_products as t1 join tbl_product as t2 on t1.product_id = t2.id join tbl_order as t3 on t1.order_id 
-         = t3.id where t3.user_id ='$id' ";
+         = t3.id where t3.code ='$id' ";
         $response = dbc::Query($query);
         return $response;
     }

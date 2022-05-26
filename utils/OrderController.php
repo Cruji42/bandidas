@@ -4,11 +4,11 @@ use ORD\Order;
 include_once 'Order.php';
 
 class OrderController {
-    public function processRequest($requestMethod, $Id, $id_order) {
+    public function processRequest($requestMethod, $id, $id_order) {
         switch ($requestMethod) {
 //        already working
             case 'GET':
-                if ($Id != null) {
+                if ($id != null) {
                     $response = $this->getOrders($Id);
                 } else {
                     $response = $this->getAllOrders();
@@ -16,10 +16,10 @@ class OrderController {
                 break;
 //        already working
             case 'POST':
-                if($Id != null){
-                    $response = $this->getOrders($Id);
-                } elseif($Id == null && $id_order ){
-                    $response = $this->deleteOrders($id_order);
+                if($id != null && $id_order == null){
+                    $response = $this->getUser_orders($id);
+                } elseif($id != null && $id_order ){
+                    $response = $this->get_order_by_code($id_order);
                 }else{
                     $response = $this->createOrdersFromRequest();
                 }
@@ -29,7 +29,7 @@ class OrderController {
                 break;
 //        already working
             case 'DELETE':
-                $response = $this->deleteOrders($Id);
+                $response = $this->deleteOrders($id_order);
                 break;
             default:
                 $response = $this->notFoundResponse();
@@ -50,6 +50,30 @@ class OrderController {
     public function getOrders($id)
     {
         $result = Order::getSingle($id);
+        if (! $result) {
+            return $this->notFoundResponse();
+        }
+//        $response['status_code_header'] = 'HTTP/1.1 200 OK';
+//        $response['body'] = $result;
+        $response = $result;
+        return $response;
+    }
+
+    public function get_order_by_code($id_order)
+    {
+        $result = Order::getSingle($id_order);
+        if (! $result) {
+            return $this->notFoundResponse();
+        }
+//        $response['status_code_header'] = 'HTTP/1.1 200 OK';
+//        $response['body'] = $result;
+        $response = $result;
+        return $response;
+    }
+
+    public function getUser_orders($id)
+    {
+        $result = Order::get_user_orders($id);
         if (! $result) {
             return $this->notFoundResponse();
         }
