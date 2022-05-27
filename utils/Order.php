@@ -35,7 +35,7 @@ class Order {
     }
     public static function getSingle($param){
         $id = $param;
-        $query = "SELECT t2.name, t1.amount, (t1.amount * t2.price) as subtotal, t1.comment
+        $query = "SELECT t2.name, t1.amount, t2.price, t1.comment
          FROM order_products as t1 join tbl_product as t2 on t1.product_id = t2.id join tbl_order as t3 on t1.order_id 
          = t3.id where t3.code ='$id' ";
         $response = dbc::Query($query);

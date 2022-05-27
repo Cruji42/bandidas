@@ -1,6 +1,6 @@
 
-revisar lo de la resolución 
-revisar un boton de order
+
+agregar default para comments ("N/A")
 
 
 

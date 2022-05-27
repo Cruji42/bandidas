@@ -63,8 +63,10 @@
                             </div>
                         </div>
                         <div class="col-xl-5 col-lg-5 d-none d-lg-block">
-                            <div class="book_room">
-                                <div class="socail_links">
+                            <div class="row book_room">
+                                
+
+                                <div class="socail_links col-3 offset-2">
                                     <ul>
                                         <li>
                                             <a href="#">
@@ -78,9 +80,14 @@
                                         </li>
                                     </ul>
                                 </div>
-                                <div class="book_btn  d-xl-block" id="log_button">
+
+                                <div class="dropdown  col-6" id="log_button" >
                                    
                                 </div>
+                                    <!-- <div class="book_btn  d-xl-block" id="log_button">
+                                       
+                                    </div> -->
+
                             </div>
                         </div>
                         <div class="col-12">
@@ -320,6 +327,52 @@
 </div>
 <!-- instragram_area_end -->
 
+<!--Modal carrito de compras start-->
+
+<div class="modal fade " id="modalShoppingCar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modalShoppingCar" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Carrito de compras</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <table class="table">
+                 <thead>
+                     <tr>
+                         <th scope="col"> </th>
+                        <th scope="col">Producto</th>
+                        <th scope="col">Cantidad</th>
+                        <th scope="col">Observaciones</th>
+                        <th scope="col">Precio unitario</th>
+                        <th scope="col">Subtotal</th>
+                    </tr>
+                 </thead>
+                 <tbody id="shoppingCarContent">
+                 </tbody>
+            </table>
+            <hr>
+            <div class="row">
+                <div class="offset-8 col-2">
+                    <b>TOTAL</b>
+                </div>
+                <div id="total" class="col-2">
+                </div>
+            </div>
+        </div>
+        
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger btn-small" data-dismiss="modal" onclick="clearModal()">Cancelar</button>
+          <button type="button" class="btn text-white btn-warning btn-small" onclick="sendOrder()" data-dismiss="modal" >Hacer la Orden</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!--MOdal carrito de compras end-->
+
 <footer class="footer">
         <div class="footer_top">
             <div class="container">
@@ -410,6 +463,7 @@
     <script src="js/mail-script.js"></script>
 
     <script src="js/main.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </body>
 
@@ -435,15 +489,122 @@
     var content;
 
     if(token){
-        let data_user = parseJwt(token);
-        console.log(data_user.data.name);
-        //content = ' <a class="#" href="./login.html" onClick="clearStorage()"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16"><path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/><path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/></svg>' + data_user.data.name + '</a>'
-        content = '<a class="#" href="./login.html" onClick="return clearStorage()" >Cerrar sesión</a>'
-    } else if(token === null || token === undefined) {
-        content = '<a class="#" href="./login.html">Inicia sesión</a>';
-    }
+            let data_user = parseJwt(token);
+            id_user = data_user.data.id;
+            content = ' <a type="button" class="btn btn-primary dropdown-toggle btn-user-menu  "  data-toggle="dropdown">' + data_user.data.name + '</a><div class="dropdown-menu div-user-menu"><button class="dropdown-item " data-toggle="modal" onclick="showDataShoppingCar()" data-target="#modalShoppingCar" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-fill" viewBox="0 0 16 16"><path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/></svg>  Carrito</button><button onclick=" location.href=\'./blog.html \'" class="dropdown-item" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-ticket-detailed-fill" viewBox="0 0 16 16"><path d="M0 4.5A1.5 1.5 0 0 1 1.5 3h13A1.5 1.5 0 0 1 16 4.5V6a.5.5 0 0 1-.5.5 1.5 1.5 0 0 0 0 3 .5.5 0 0 1 .5.5v1.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 11.5V10a.5.5 0 0 1 .5-.5 1.5 1.5 0 1 0 0-3A.5.5 0 0 1 0 6V4.5Zm4 1a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 0-1h-7a.5.5 0 0 0-.5.5Zm0 5a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 0-1h-7a.5.5 0 0 0-.5.5ZM4 8a1 1 0 0 0 1 1h6a1 1 0 1 0 0-2H5a1 1 0 0 0-1 1Z"/></svg>  Ordenes</button><hr class="div-user-menu-hr"><button onclick="logout()" class="dropdown-item" style="vertical-align: middle;" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-left" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z"/><path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"/></svg>  Cerrar sesión</button></div>'
+        } else if(token === null || token === undefined) {
+            content = '<a type="button" class="btn btn-primary  btn-user-menu" href="./login.html">Inicia sesión</a>';
+        }
     
     div_log.insertAdjacentHTML('afterbegin', content);
+
+    var html_shoppingCard;
+        var tboddy_shopping_card = document.getElementById('shoppingCarContent');
+        var total_shoppingCard;
+        var  html_total_shoppingCard;
+        var  div_total_shoppingCard = document.getElementById("total");
+
+        function showDataShoppingCar(){
+            html_shoppingCard = ""; 
+            html_total_shoppingCard = "";
+            total_shoppingCard = 0;
+            let data = JSON.parse(localStorage.getItem('shopping_car_'+id_user));
+             $("#shoppingCarContent tr").remove();
+             $("#total p").remove();
+             console.log(data);
+                 data.forEach( element => {
+                 let subtotal = parseInt(element.amount) * parseInt(element.price);
+                 total_shoppingCard = total_shoppingCard + subtotal;
+                 
+                  html_shoppingCard = html_shoppingCard + '<tr><th><button type="button" class="deleteButton" onclick="deleteProduct('+ element.product_id +')"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/></svg></button></th><th scope="row">'+ element.name +'</th><td>'+element.amount +'</td><td>' + element.comments +'</td><td>$ '+element.price+'</td><td>$ '+subtotal+'</td></tr>'
+              } )
+           
+             html_total_shoppingCard = "<p> $ "+ total_shoppingCard +"</p>";
+             div_total_shoppingCard.insertAdjacentHTML('afterbegin', html_total_shoppingCard);
+             tboddy_shopping_card.insertAdjacentHTML('afterbegin', html_shoppingCard);
+            
+        }
+
+        function sendOrder(){
+            console.log(id_user);
+            array_insert_order = {
+                user_id: id_user,
+                order: JSON.parse(localStorage.getItem('shopping_car_'+id_user))
+            }
+
+            console.log(array_insert_order);
+
+            $.ajax({
+                type: "POST",
+                url: "https://bandidas.herokuapp.com/index.php/ORDER",
+                data: JSON.stringify(array_insert_order),
+                contentType: "application/json",
+                success: function (result, status) {
+                            console.log(result);
+                             if( result.body === 'success'){
+                                 localStorage.removeItem("shopping_car_"+id_user);
+                                 Swal.fire({
+                                     title: 'Orden realizada',
+                                    text: 'Tu orden ha sido realizada con exito',
+                                    icon: 'success',
+                                    confirmButtonText: 'Aceptar',
+                                    confirmButtonColor: '#F2C64D'
+                                })
+                             } else {
+                                Swal.fire({
+                                title: 'Error',
+                                icon: 'error',
+                                text: 'Lo sentimos, no pudimos procesar tu orden, intentalo más tarde',
+                                confirmButtonText: 'Aceptar',
+                                confirmButtonColor: '#F2C64D'
+                                }) 
+                             }
+                         },
+                error: function (error, status) {
+                            console.log(error);
+                        }
+            })
+        }
+
+        function deleteProduct(id){
+
+            html_shoppingCard = ""; 
+            html_total_shoppingCard = "";
+            total_shoppingCard = 0;
+            Swal.fire({
+                title: 'Eliminar producto',
+                text: '¡Realmente deseas eliminar este producto de tu carrito de compras?',
+                icon: 'warning',
+                confirmButtonText: 'Aceptar',
+                confirmButtonColor: '#F2C64D',
+                showCancelButton: true,
+                cancelButtonText: 'Cancelar',
+                cancelButtonColor: '#D73141'
+            }).then((res) => {
+                if(res.isConfirmed){
+                    let data = JSON.parse(localStorage.getItem('shopping_car_'+id_user));
+                    data.forEach( (element, index) => {
+                        if( parseInt(element.product_id) === id){
+                            data.splice(index,1);
+                        }
+                    })            
+                    $("#shoppingCarContent tr").remove();
+                    $("#total p").remove();
+
+                    data.forEach( element => {
+                        let subtotal = parseInt(element.amount) * parseInt(element.price);
+                        total_shoppingCard = total_shoppingCard + subtotal;
+                        html_shoppingCard = html_shoppingCard + '<tr><th><button type="button" class="deleteButton" onclick="deleteProduct('+ element.product_id +')"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/></svg></button></th><th scope="row">'+ element.name +'</th><td>'+element.amount +'</td><td>' + element.comments +'</td><td>$ '+element.price+'</td><td>$ '+subtotal+'</td></tr>'
+                    } )
+           
+                    html_total_shoppingCard = "<p> $ "+ total_shoppingCard +"</p>";
+                    div_total_shoppingCard.insertAdjacentHTML('afterbegin', html_total_shoppingCard);
+                    tboddy_shopping_card.insertAdjacentHTML('afterbegin', html_shoppingCard);  
+                    localStorage.setItem('shopping_car_'+id_user, JSON.stringify(data));                 
+                }
+            } )
+           
+        }
 </script>
 
 </html>

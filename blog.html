@@ -110,48 +110,7 @@
     <section class="blog_area section-padding">
         <div class="container">
             <div class="row"  id="order">
-                <div class="col-lg-6 mb-6 mb-lg-0">
-                    <article class="blog_item">
-                            <div class="blog_item_img">
-                                <img class="card-img rounded-0" src="img/blog/single_blog_1.png" alt="">
-                                <a href="#" class="blog_item_date">
-                                    <h3>15</h3>
-                                    <p>Jan</p>
-                                </a>
-                            </div>
-
-                            <div class="blog_details">
-                                <a class="d-inline-block" href="single-blog.html">
-                                    <h2>Google inks pact for new 35-storey office</h2>
-                                </a>
-                                <p>That dominion stars lights dominion divide years for fourth have don't stars is that
-                                    he earth it first without heaven in place seed it second morning saying.</p>
-                                <ul class="blog-info-link">
-                                    <li><a href="#"><i class="fa fa-user"></i> Travel, Lifestyle</a></li>
-                                    <li><a href="#"><i class="fa fa-comments"></i> 03 Comments</a></li>
-                                </ul>
-                            </div>
-                    </article>
-                </div>
-
-                <div class="col-lg-6 mb-6 mb-lg-0">
-                    <article class="blog_item">
-
-                            <div class="blog_details">
-                                <a class="d-inline-block">
-                                    <h2>'+ element.code +'</h2>
-                                </a>
-                                <div id="products">
-
-                                </div>
-                                <ul class="blog-info-link">
-                                    <li><a href="#"><i class="fa fa-user"></i>'+ element.status +'</a></li>
-                                    <li><a href="#"><i class="fa fa-comments"></i>'+element.date +'</a></li>
-                                </ul>
-                            </div>
-                    </article>
-                </div>
-
+                
             </div>
             <nav class="blog-pagination justify-content-center d-flex">
                 <ul class="pagination">
@@ -189,7 +148,6 @@
                 <table class="table">
                      <thead>
                          <tr>
-                             <th scope="col"> </th>
                             <th scope="col">Producto</th>
                             <th scope="col">Cantidad</th>
                             <th scope="col">Observaciones</th>
@@ -213,6 +171,45 @@
             <div class="modal-footer">
               <button type="button" class="btn btn-danger btn-small" data-dismiss="modal" >Cancelar</button>
               <button type="button" class="btn text-white btn-warning btn-small" onclick="sendOrder()" data-dismiss="modal" >Hacer la Orden</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade " id="modalOrder" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modalShoppingCar" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="LabelOrder">Orden </h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <table class="table">
+                     <thead>
+                         <tr>
+                            <th scope="col">Producto</th>
+                            <th scope="col">Cantidad</th>
+                            <th scope="col">Observaciones</th>
+                            <th scope="col">Precio unitario</th>
+                            <th scope="col">Subtotal</th>
+                        </tr>
+                     </thead>
+                     <tbody id="OrderContent">
+                     </tbody>
+                </table>
+                <hr>
+                <div class="row">
+                    <div class="offset-8 col-2">
+                        <b>TOTAL</b>
+                    </div>
+                    <div id="totalOrder" class="col-2">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn text-white btn-warning btn-small" data-dismiss="modal" >Cerrar</button>
             </div>
           </div>
         </div>
@@ -340,8 +337,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
 <script>
     var token = localStorage.getItem('token');
-
-
+   
     function clearStorage(){
         localStorage.clear();
 
@@ -374,6 +370,64 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     }
     
     div_log.insertAdjacentHTML('afterbegin', content);
+
+    var div_order_product = document.getElementById('OrderContent');
+    var div_total_order = document.getElementById('totalOrder');
+
+    function getDataOrder(id){
+            let html_products_order = "";
+            let total_order = 0;
+            let html_total_order;
+            $("#OrderContent tr").remove();
+             $("#totalOrder p").remove();
+            $.ajax({
+                type: "POST",
+                url: "https://bandidas.herokuapp.com/index.php/ORDER",
+                data: JSON.stringify({ "id": parseInt(id_user), "id_order": id }),
+                contentType: "application/json",
+                success: function (result, status) {
+                    console.log(result);
+                    result.forEach(element =>{
+                        let subtotal = parseInt(element.amount) * parseInt(element.price);
+                        total_order = total_order + subtotal;
+                        html_products_order = html_products_order + '<tr><th scope="row">'+ element.name +'</th><td>'+element.amount +'</td><td>' + element.comment +'</td><td>$ '+element.price+'</td><td>$ '+subtotal+'</td></tr>'
+                    })
+                    html_total_order = "<p> $ "+ total_order +"</p>";
+                    div_order_product.insertAdjacentHTML('afterbegin',html_products_order);
+                    div_total_order.insertAdjacentHTML('afterbegin', html_total_order);
+
+
+                    
+                },
+                error:function (error,status){
+                        console.log(error);
+                }
+            })
+
+        }
+
+        var html_order = "";
+        var div_order = document.getElementById("order")
+
+    $.ajax({
+                type: "POST",
+                url: "https://bandidas.herokuapp.com/index.php/ORDER",
+                data: JSON.stringify({ "id": parseInt(id_user)}),
+                contentType: "application/json",
+                success: function (result, status) {
+                    console.log(result);
+                            result.forEach(element => {
+                                html_order = html_order + '<div class="col-lg-6 mb-6 mb-lg-0"><article class="blog_item"><div class="blog_details"><div class="row"><div class="col-5">Folio de orden:  <h2 style="color: #FFC312;">'+ element.code +'</h2></div><div class="col-5">Total:<h2 style="color: #FFC312;"> $'+ element.total +'</h2></div></div><ul class="blog-info-link"><li><span href="#" >'+ element.status +'</span></li><li><span href="#">'+ element.creation_date +'</span></li><li><a data-toggle="modal" onclick="getDataOrder(\''+element.code+'\')" data-target="#modalOrder">Ver más</a></li></ul></div></article></div>'
+                            });
+                             div_order.insertAdjacentHTML('afterbegin',html_order);
+                         },
+                error: function (error, status) {
+                            console.log(error);
+                        }
+            })
+
+        
+
 
         var html_shoppingCard;
         var tboddy_shopping_card = document.getElementById('shoppingCarContent');
@@ -482,6 +536,10 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
             } )
            
         }
+
+        var info_order = [];
+
+
 </script>
 </body>
 

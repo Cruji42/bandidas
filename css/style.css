@@ -6394,6 +6394,11 @@ h6 {
 }
 }
 
+.noHover:hover{
+  color: #000 !important;
+  background: -webkit-linear-gradient(131deg, #000 0%, #000 99%) !important;
+}
+
 
 .deleteButton{
   border: none;
@@ -6401,7 +6406,7 @@ h6 {
 }
 
 .deleteButton:hover{
-  color: #FFC312;
+  color: ;
   cursor: pointer;
 }
 .btn-user-menu{
