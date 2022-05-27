@@ -525,6 +525,11 @@
             
         }
 
+        function logout(){
+            localStorage.removeItem("token");
+            location.href="./login.html";
+        }
+
         function sendOrder(){
             console.log(id_user);
             array_insert_order = {
