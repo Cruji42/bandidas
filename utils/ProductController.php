@@ -4,15 +4,17 @@ use PD\Product;
 include_once 'Product.php';
 
 class ProductController {
-    public function processRequest($requestMethod, $productId) {
+    public function processRequest($requestMethod, $productId, $promotion) {
         switch ($requestMethod) {
 //        already working
             case 'GET':
                 if ($productId != null) {
                     $response = $this->getProduct($productId);
+                } else if($promotion  != null) {
+                    $response = $this->getAllProductsPromotions();
                 } else {
                     $response = $this->getAllProducts();
-                };
+                }
                 break;
 //        already working
             case 'POST':
@@ -35,6 +37,16 @@ class ProductController {
     public function getAllProducts()
     {
         $result = Product::getProducts();
+//        $response['status_code_header'] = 'HTTP/1.1 200 OK';
+//        $response['body'] = json_encode($result);
+        $response=$result;
+        return $response;
+    }
+
+
+    public function getAllProductsPromotions()
+    {
+        $result = Product::getProductsPromotions();
 //        $response['status_code_header'] = 'HTTP/1.1 200 OK';
 //        $response['body'] = json_encode($result);
         $response=$result;

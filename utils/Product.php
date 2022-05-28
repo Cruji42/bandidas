@@ -24,6 +24,12 @@ class Product {
         return $response;
     }
 
+    public static function getProductsPromotions(){
+        $query = "SELECT * FROM public.tbl_product where promotion=true";
+        $response = dbc::Query($query);
+        return $response;
+    }
+
     public static function getSingleProduct($param){
         $id = $param;
         $query = "Select * from public.tbl_product where id = $id";

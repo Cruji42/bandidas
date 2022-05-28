@@ -6394,6 +6394,10 @@ h6 {
 }
 }
 
+.modal-body{
+  overflow-x: auto;
+}
+
 .noHover:hover{
   color: #000 !important;
   background: -webkit-linear-gradient(131deg, #000 0%, #000 99%) !important;

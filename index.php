@@ -40,9 +40,10 @@ switch ($URL){
         $postdata = file_get_contents("php://input");
         $request = json_decode($postdata);
         @$productId = $request-> id;
+        @$promotion = $request-> promotion;
         $requestMethod = $_SERVER["REQUEST_METHOD"];
         $controller = new ProductController();
-        $controller->processRequest($requestMethod, $productId);
+        $controller->processRequest($requestMethod, $productId,$promotion);
         break;
 
     case 'ORDER':
