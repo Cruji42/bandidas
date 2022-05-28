@@ -137,8 +137,8 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section_title text-center mb-80">
-                        <span>Promociones Menu</span>
-                        <h3>LOS MEJORES SNACKS</h3>
+                        <span>Los mejores snacks</span>
+                        <h3>Nuestras Promos</h3>
                     </div>
                 </div>
             </div>
@@ -578,15 +578,16 @@
         var html_Menu = "";
         var div_product_Menu = document.getElementById("product_Menu");
         $.ajax({
-                type: "GET",
-                url: "https://bandidas.herokuapp.com/index.php/PRODUCT",
-                //url: "http://localhost/LasBandidas/index.php/PRODUCT",
+                type: "POST",
+                //url: https://bandidas.herokuapp.com/index.php/PRODUCT,
+                url: "http://localhost/LasBandidas/index.php/PRODUCT",
                 data: JSON.stringify({"promotion": true}),
                 contentType: "application/json",
                 success: function (result, status) {
+                            console.log(result);
                             result.forEach(element => {
                                 if(token) {
-                                    html_Menu = html_Menu + '<div class=" col-md-6 col-lg-6"><div class="single_delicious d-flex align-items-center"><div class="thumb"><img src="'+ element.image +'" width="250px" height="165px" alt=""></div><div class="info"><h3>'+ element.name +'</h3><p>'+ element.description +'</p><div class="row"> <span class="col-2">$'+ element.price +'</span> <a href="#" onclick="return getData( '+ element.id +', \' '+ element.name +' \', \' '+ element.price +' \')" data-toggle="modal" data-target="#exampleModal" class="boxed-btn3 col-7 offset-1">Ordenar ahora</a></div></div></div></div>'
+                                    html_Menu = html_Menu + '<div class=" col-md-12 col-lg-12"><div class="single_delicious d-flex align-items-center"><div class="thumb"><img src="'+ element.image +'" width="250px" height="165px" alt=""></div><div class="info"><h3>'+ element.name +'</h3><p>'+ element.description +'</p><div class="row"> <span class="col-2">$'+ element.price +'</span> <a href="#" onclick="return getData( '+ element.id +', \' '+ element.name +' \', \' '+ element.price +' \')" data-toggle="modal" data-target="#exampleModal" class="boxed-btn3  col-5 offset-1">Ordenar ahora</a></div></div></div></div>'
                                 } else if( token === null || token === undefined){
                                     html_Menu = html_Menu + '<div class=" col-md-6 col-lg-6"><div class="single_delicious d-flex align-items-center"><div class="thumb"><img src="'+ element.image +'" width="250px" height="165px" alt=""></div><div class="info"><h3>'+ element.name +'</h3><p>'+ element.description +'</p><div class="row"> <span class="col-2">$'+ element.price +'</span></div></div></div></div>'
                                 }
@@ -595,7 +596,7 @@
                             div_product_Menu.insertAdjacentHTML('afterbegin',html_Menu);
                          },
                 error: function (error, status) {
-                            console.log(error);
+                            console.log(status);
                         }
             })
 

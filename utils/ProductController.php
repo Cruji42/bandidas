@@ -10,15 +10,17 @@ class ProductController {
             case 'GET':
                 if ($productId != null) {
                     $response = $this->getProduct($productId);
-                } else if($promotion  != null) {
-                    $response = $this->getAllProductsPromotions();
                 } else {
                     $response = $this->getAllProducts();
                 }
                 break;
 //        already working
             case 'POST':
-                $response = $this->createProductFromRequest();
+                if($promotion  != null) {
+                    $response = $this->getAllProductsPromotions();
+                } else {
+                    $response = $this->createProductFromRequest();
+                }
                 break;
             case 'PUT':
                 $response = $this->updateUserFromRequest($productId);
